@@ -5,6 +5,10 @@ string task_id
 
 rmf_dispenser_msgs/DispenserRequestItem[] items
 
+# robot_type can be used to specify a particular robot fleet
+# for this request
+string robot_type
+
 string pickup_place_name
 string pickup_dispenser
 Behavior pickup_behavior

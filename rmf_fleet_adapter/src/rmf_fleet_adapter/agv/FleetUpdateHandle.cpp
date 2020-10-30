@@ -65,6 +65,9 @@ auto FleetUpdateHandle::Implementation::estimate_delivery(
     const rmf_task_msgs::msg::Delivery& request) const
 -> rmf_utils::optional<FleetUpdateHandle::Implementation::DeliveryEstimate>
 {
+  if (!request.robot_type.empty() && request.robot_type != name)
+    return rmf_utils::nullopt;
+
   const auto& graph = planner->get_configuration().graph();
   const auto pickup_wp = graph.find_waypoint(request.pickup_place_name);
   if (!pickup_wp)
